@@ -1,0 +1,37 @@
+/* ── AI Planner Card – blue mascot design ─────────────────── */
+.home-ai-planner{padding:0 var(--gutter) 8px}
+.home-ai-planner-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 16px 18px 20px;border-radius:22px;background:linear-gradient(135deg,#1a2eab 0%,#2543d0 55%,#1e3dc4 100%);color:#fff;text-decoration:none;box-shadow:0 10px 28px rgba(37,67,208,.38);overflow:hidden;position:relative}
+.home-ai-planner-card::before{content:"";position:absolute;right:-28px;bottom:-28px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.home-ai-planner-card::after{content:"";position:absolute;right:60px;top:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+.home-ai-planner-content{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.home-ai-planner-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.18);color:#fff;font-size:10px;font-weight:700;letter-spacing:.03em;width:fit-content}
+.home-ai-planner-title{font-size:19px;font-weight:800;letter-spacing:-.4px;color:#fff;line-height:1.15;margin-top:2px}
+.home-ai-planner-sub{font-size:11px;color:rgba(255,255,255,.78);line-height:1.4;margin-top:1px}
+/* ── Robot mascot container ───────────────────────────────── */
+.home-ai-robot-wrap{flex:none;width:80px;height:88px;display:flex;align-items:center;justify-content:center}
+.home-ai-robot{width:80px;height:88px;overflow:visible}
+/* ── Breathing: entire body group ────────────────────────── */
+@keyframes robot-breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2.5px) scale(1.012)}}
+.robot-body-group{transform-origin:40px 56px;animation:robot-breathe 3.2s ease-in-out infinite}
+/* ── Swaying: occasional left–right lean ─────────────────── */
+@keyframes robot-sway{0%,35%,65%,100%{transform:rotate(0deg)}42%{transform:rotate(-5deg)}55%{transform:rotate(5deg)}}
+.home-ai-robot{animation:robot-sway 7s ease-in-out infinite;transform-origin:40px 60px}
+/* ── Blinking: eyelid rect covers the eye ────────────────── */
+@keyframes robot-blink{0%,89%,95%,100%{height:0;y:50}90%,94%{height:10px;y:49}}
+.robot-blink-left{animation:robot-blink 4.5s ease-in-out infinite}
+.robot-blink-right{animation:robot-blink 4.5s ease-in-out infinite .05s}
+/* ── Eye glow pulse ───────────────────────────────────────── */
+@keyframes eye-glow{0%,100%{opacity:1}50%{opacity:.6}}
+.robot-eye-left,.robot-eye-right{animation:eye-glow 2.8s ease-in-out infinite}
+.robot-eye-right{animation-delay:.4s}
+/* ── Antenna tip pulse ────────────────────────────────────── */
+@keyframes antenna-pulse{0%,100%{r:5}50%{r:5.8}}
+.robot-antenna-tip{animation:antenna-pulse 2s ease-in-out infinite}
+@keyframes glow-pulse{0%,100%{opacity:.25}50%{opacity:.5}}
+.robot-antenna-glow{animation:glow-pulse 2s ease-in-out infinite}
+/* ── Chest light blink ────────────────────────────────────── */
+@keyframes chest-blink{0%,45%,55%,100%{opacity:.5}50%{opacity:1}}
+.robot-chest-light{animation:chest-blink 2.5s ease-in-out infinite}
+.trip-planner{padding:0 17px 24px;color:var(--navy)}.trip-planner-header{display:flex;align-items:center;gap:8px;height:68px;border-bottom:1px solid var(--line)}.trip-planner-header .icon-button{margin-left:-10px}.trip-planner-header>div{min-width:0}.trip-planner-header span{color:var(--muted);font-size:9px;font-weight:800;letter-spacing:.12em}.trip-planner-header h1{margin:2px 0 0;font-size:21px}.trip-planner-intro{padding:18px 0 6px}.trip-planner-intro p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.trip-intent-card{display:flex;gap:11px;margin:15px 0;padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--ai-gradient-soft)}.trip-intent-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:12px;background:var(--surface);color:var(--blue)}.trip-intent-card small,.trip-intent-card span{display:block;color:var(--muted);font-size:10px}.trip-intent-card h2{margin:2px 0 4px;font-size:18px}.trip-intent-card p{margin:0 0 6px;font-size:12px}.trip-planner-controls{padding:8px 0 18px}.trip-planner-controls label{display:block;margin:13px 0 7px;color:var(--text-secondary);font-size:12px;font-weight:800}.trip-choice-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}.trip-choice-row::-webkit-scrollbar{display:none}.trip-choice{flex:none;padding:8px 12px;border:1px solid var(--line);border-radius:18px;color:var(--navy);font-size:11px;font-weight:700;white-space:nowrap}.trip-choice.selected{border-color:var(--navy);background:var(--navy);color:var(--surface)}.trip-itinerary{padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.trip-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}.trip-section-heading small{color:var(--muted);font-size:10px;font-weight:800}.trip-section-heading h2{margin:2px 0 0;font-size:19px}.trip-section-heading>strong{color:var(--red);font-size:18px}.trip-itinerary-note{margin:8px 0 10px;color:var(--muted);font-size:11px}.trip-itinerary-item{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line);color:var(--navy)}.trip-day{flex:none;width:42px;color:var(--ai-violet);font-size:10px;font-weight:800}.trip-itinerary-item>span:nth-child(2){display:flex;flex:1;flex-direction:column;gap:3px;min-width:0}.trip-itinerary-item strong{overflow:hidden;font-size:12px;line-height:1.25;text-overflow:ellipsis}.trip-itinerary-item small{color:var(--muted);font-size:10px}.trip-planner>.primary-button{margin-top:18px}.trip-planner-footnote{display:block;margin-top:12px;text-align:center;font-size:10px}
+.detail-social-proof{display:flex;align-items:center;justify-content:center;gap:6px;margin:0 auto 17px;color:var(--ai-violet);font-size:11px;font-weight:800;text-align:center}
+.community-reason{margin-top:4px;color:var(--text-secondary);font-size:10px;line-height:1.25}

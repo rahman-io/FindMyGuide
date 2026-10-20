@@ -1,0 +1,7 @@
+{
+  "name": "FindMyGuide",
+  "description": "Discover unforgettable travel experiences, book verified local guides, airport/ferry transfers, and explore social travel vibes.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

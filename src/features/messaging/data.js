@@ -1,0 +1,63 @@
+// Local demo conversations mirror the future Firestore conversation/message shape.
+export const demoChatThreads = [
+  {
+    id: 'thread-rahman-maya',
+    participantIds: ['rahman', 'maya'],
+    context: { experienceId: 'kayaking', label: 'Split: Illuminated Evening Guided Kayaking Tour' },
+    createdAt: '2026-10-09T09:00:00Z',
+    updatedAt: '2026-10-13T20:12:00Z',
+    lastMessageId: 'chat-2',
+    unreadBy: { rahman: 1, maya: 0 },
+    status: 'active',
+  },
+  {
+    id: 'thread-rahman-dario',
+    participantIds: ['rahman', 'dario'],
+    context: { experienceId: 'pantheon', label: 'Rome: Pantheon Official Ticket & App for City Churches' },
+    createdAt: '2026-10-08T10:00:00Z',
+    updatedAt: '2026-10-12T10:04:00Z',
+    lastMessageId: 'chat-4',
+    unreadBy: { rahman: 0, dario: 0 },
+    status: 'active',
+  },
+  {
+    id: 'thread-rahman-sophie',
+    participantIds: ['rahman', 'sophie'],
+    context: { experienceId: 'skydiving', label: 'Queenstown: Tandem Skydive Experience' },
+    createdAt: '2026-10-07T08:00:00Z',
+    updatedAt: '2026-10-11T16:10:00Z',
+    lastMessageId: 'chat-5',
+    unreadBy: { rahman: 1, sophie: 0 },
+    status: 'active',
+  },
+  {
+    id: 'thread-maya-leo',
+    participantIds: ['maya', 'leo'],
+    context: { experienceId: 'kayaking', label: 'Split: Illuminated Evening Guided Kayaking Tour' },
+    createdAt: '2026-10-06T11:00:00Z',
+    updatedAt: '2026-10-10T18:30:00Z',
+    lastMessageId: 'chat-6',
+    unreadBy: { maya: 0, leo: 1 },
+    status: 'active',
+  },
+  {
+    id: 'thread-nina-sophie',
+    participantIds: ['nina', 'sophie'],
+    context: { experienceId: 'skydiving', label: 'Queenstown: Tandem Skydive Experience' },
+    createdAt: '2026-10-05T12:00:00Z',
+    updatedAt: '2026-10-09T15:18:00Z',
+    lastMessageId: 'chat-7',
+    unreadBy: { nina: 1, sophie: 0 },
+    status: 'active',
+  },
+];
+
+export const demoChatMessages = [
+  { id: 'chat-1', threadId: 'thread-rahman-maya', senderId: 'maya', text: 'That kayaking spot looks unreal. Are you thinking of booking it?', createdAt: '2026-10-13T19:58:00Z', readBy: ['maya'] },
+  { id: 'chat-2', threadId: 'thread-rahman-maya', senderId: 'rahman', text: 'Yes! I saved the experience so we can compare dates.', createdAt: '2026-10-13T20:12:00Z', readBy: ['rahman'] },
+  { id: 'chat-3', threadId: 'thread-rahman-dario', senderId: 'dario', text: 'If you visit Rome, the early morning Pantheon slot is beautiful.', createdAt: '2026-10-12T09:42:00Z', readBy: ['dario', 'rahman'] },
+  { id: 'chat-4', threadId: 'thread-rahman-dario', senderId: 'rahman', text: 'That sounds perfect. Thanks for the local tip!', createdAt: '2026-10-12T10:04:00Z', readBy: ['rahman', 'dario'] },
+  { id: 'chat-5', threadId: 'thread-rahman-sophie', senderId: 'sophie', text: 'The Queenstown jump was unforgettable. You have to try it!', createdAt: '2026-10-11T16:10:00Z', readBy: ['sophie'] },
+  { id: 'chat-6', threadId: 'thread-maya-leo', senderId: 'maya', text: 'Next stop: Split? I found an evening tour we might love.', createdAt: '2026-10-10T18:30:00Z', readBy: ['maya'] },
+  { id: 'chat-7', threadId: 'thread-nina-sophie', senderId: 'nina', text: 'Your skydive photos are incredible!', createdAt: '2026-10-09T15:18:00Z', readBy: ['nina'] },
+];

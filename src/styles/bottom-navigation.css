@@ -1,0 +1,106 @@
+:root {
+  --bottom-navigation-space: calc(80px + env(safe-area-inset-bottom));
+}
+
+.bottom-nav {
+  bottom: 0;
+  display: block;
+  width: min(100%, 560px);
+  height: var(--bottom-navigation-space);
+  padding: 0 0 env(safe-area-inset-bottom);
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.bottom-nav-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bottom-nav-items {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  height: 100%;
+}
+
+.bottom-nav .nav-item {
+  min-width: 0;
+  gap: 5px;
+  padding: 11px 2px 9px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.bottom-nav .nav-item.active {
+  padding: 11px 2px 9px;
+  color: var(--ai-violet);
+  font-weight: 700;
+}
+
+.bottom-nav .nav-item.active::before {
+  top: -1px;
+  right: 18%;
+  left: 18%;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: var(--ai-gradient);
+}
+
+.bottom-nav .nav-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.bottom-nav .nav-item .icon { width: 26px; height: 26px; }
+.bottom-nav .nav-item.active .icon { stroke: url(#bottom-nav-gradient); }
+
+.bottom-nav .nav-item.active .nav-label {
+  background-image: var(--ai-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bottom-nav .nav-icon .notification-dot { top: -4px; right: -7px; }
+.bottom-nav .nav-label { max-width: 100%; white-space: nowrap; }
+.bottom-nav a:focus-visible { outline: 2px solid var(--blue); outline-offset: -4px; }
+
+.app-shell:has(> .bottom-nav) > .main-content {
+  padding-bottom: var(--bottom-navigation-space);
+}
+
+.app-shell:has(> .bottom-nav) > .detail-page {
+  padding-bottom: calc(var(--bottom-navigation-space) + 88px);
+}
+
+.app-shell:has(> .bottom-nav) > .detail-cta {
+  bottom: var(--bottom-navigation-space);
+}
+
+.app-shell:has(> .bottom-nav) .floating-map {
+  bottom: calc(var(--bottom-navigation-space) + 11px);
+}
+
+#app:has(.bottom-nav) > .toast {
+  bottom: calc(var(--bottom-navigation-space) + 23px);
+}
+
+@media (max-width: 380px) {
+  .bottom-nav .nav-item { font-size: 11px; }
+  .bottom-nav .nav-item .icon { width: 24px; height: 24px; }
+  .bottom-nav .nav-icon { width: 26px; height: 26px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bottom-nav .nav-icon { transition: transform .2s ease; }
+  .bottom-nav .nav-item:active .nav-icon { transform: scale(.93); }
+}

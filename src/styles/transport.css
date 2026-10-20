@@ -1,0 +1,127 @@
+/* Port-transfer feature (adopted from the Lembar Transport Customer flow). All rules are
+   newly namespaced under .transport-* / .home-transport-banner so nothing here touches an
+   existing selector. */
+
+.transport-page{padding-top:20px;padding-bottom:32px}
+.transport-hero{margin-bottom:22px}
+.transport-hero-banner{background:var(--ai-gradient-soft);border-radius:24px;padding:30px 20px 26px;text-align:center;margin-bottom:18px}
+.transport-hero-images{display:flex;justify-content:center;margin-bottom:22px}
+.transport-hero-img-wrap{width:52%;flex:none}
+.transport-hero-img-wrap:first-child{transform:translateX(8%);z-index:1}
+.transport-hero-img-wrap:last-child{transform:translateX(-8%)}
+.transport-hero-img-wrap img{width:100%;max-height:110px;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(23,46,75,.12))}
+.transport-hero-banner h1{margin:0 0 8px;font-size:26px;line-height:1.2;color:var(--navy)}
+.transport-hero-banner h1 span{font-weight:400;color:var(--blue)}
+.transport-hero-banner>p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.transport-hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px}
+.transport-hero-badges span{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;font-size:12px;font-weight:600;color:var(--text-secondary)}
+.transport-hero-badges svg{color:var(--blue);flex:none}
+.transport-hero .primary-button{border-radius:28px;min-height:52px;font-size:15px}
+
+.transport-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:0 8px 24px #172e4b0d}
+.transport-page>*+.transport-card{margin-top:14px}
+
+.transport-steps{position:sticky;top:calc(env(safe-area-inset-top) + 68px);z-index:12;background:var(--surface);display:flex;list-style:none;margin:0;padding:12px 0 14px;gap:0}
+.transport-steps li{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:10px;font-weight:700;line-height:1.2;text-align:center}
+.transport-steps li.done,.transport-steps li.active{color:var(--navy)}
+.transport-steps li+li::before{content:'';position:absolute;top:14px;right:50%;left:-50%;height:2px;background:var(--line);z-index:0}
+.transport-steps li.done+li::before{background-image:var(--ai-gradient)}
+.transport-step-bullet{position:relative;z-index:1;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface);border:2px solid var(--line);color:var(--muted);font-size:12px;font-weight:800}
+.transport-steps li.done .transport-step-bullet{background-image:var(--ai-gradient);border-color:transparent;color:var(--surface)}
+.transport-steps li.active .transport-step-bullet{background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--ai-gradient) border-box;border:2px solid transparent;color:var(--brand-gradient-middle)}
+.transport-steps li.active .transport-step-label{background-image:var(--ai-gradient);background-clip:text;-webkit-background-clip:text;color:transparent}
+
+.transport-form label{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--navy)}
+.transport-field-hint{font-weight:400;color:var(--muted)}
+.transport-form input,.transport-form select,.transport-form textarea{width:100%;min-height:44px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--navy);font-size:14px;font-weight:400}
+.transport-form textarea{min-height:76px;resize:vertical}
+.transport-form .transport-check{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;font-size:13px;font-weight:600}
+.transport-form .transport-check input{width:auto;min-height:0}
+.transport-field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* Destination search (step 0) — same box+live-list+tap-to-pick pattern as Discover's own
+   search (.search-field/.suggestion in global.css), rebuilt here with new, namespaced classes
+   so nothing shared with Discover is touched. No .transport-form label on this field, so the
+   .transport-form label{flex-direction:column} cascade bug from the payment cards can't recur. */
+.transport-destination-field{display:flex;align-items:center;gap:10px;height:47px;border:1px solid var(--line);border-radius:30px;padding:0 15px;background:var(--surface);color:var(--navy);margin-bottom:9px}
+.transport-destination-field-icon{display:grid;place-items:center;flex:none;color:var(--muted)}
+.transport-destination-field input{width:100%;border:0;outline:0;background:transparent;color:var(--navy);font-size:14px;font-weight:400}
+.transport-destination-results{margin:-2px 0 12px;max-height:280px;overflow-y:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.transport-destination-option{display:flex;width:100%;align-items:center;gap:12px;padding:11px 14px;border:0;border-bottom:1px solid var(--line);background:var(--surface);text-align:left;color:var(--navy);cursor:pointer}
+.transport-destination-option:last-child{border-bottom:0}
+.transport-destination-option:hover,.transport-destination-option:focus-visible{background:var(--soft)}
+.transport-destination-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:10px;background:var(--pale-blue);color:var(--blue)}
+.transport-destination-option strong{display:block;font-size:13px}
+.transport-destination-option small{display:block;margin-top:2px;color:var(--muted);font-size:11px}
+.transport-destination-empty,.transport-destination-outside{padding:14px;font-size:12px;text-align:center}
+.transport-destination-empty{color:var(--muted)}
+.transport-destination-outside{color:var(--warning);background:var(--warning-soft);border-radius:13px}
+
+.transport-stepper{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+.transport-stepper span{font-size:13px;font-weight:700;color:var(--navy)}
+.transport-stepper small{display:block;margin-top:2px;color:var(--muted);font-size:10px;font-weight:400}
+.transport-stepper input{width:64px;min-height:36px;padding:6px;text-align:center;flex:none}
+
+.transport-alert{display:flex;gap:10px;align-items:flex-start;margin:16px 0;padding:12px 14px;border-radius:12px;background:var(--pale-blue);color:var(--blue);font-size:13px;line-height:1.5}
+.transport-alert svg{flex:none;margin-top:1px}
+.transport-alert-warn{background:var(--warning-soft);color:var(--warning)}
+.transport-alert-danger{background:var(--danger-soft);color:var(--red)}
+.transport-alert-good{background:var(--success-soft);color:var(--success)}
+.transport-alert a,.transport-alert button{font-weight:800;text-decoration:underline;color:inherit}
+
+.transport-vehicle-list{display:grid;gap:10px}
+.transport-vehicle-card{padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-align:center;overflow:hidden}
+.transport-vehicle-card.selected{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue-shadow)}
+.transport-vehicle-card.unavailable{background:var(--surface-subtle);opacity:.75}
+.transport-vehicle-hero{display:flex;justify-content:center;align-items:center;padding:18px 10px;margin:-14px -14px 14px;background:var(--soft);border-radius:17px 17px 0 0}
+.transport-vehicle-img{display:block;max-width:85%;max-height:120px;object-fit:contain}
+.transport-vehicle-name{display:block;font-size:16px;font-weight:800;color:var(--navy)}
+.transport-vehicle-examples{display:block;margin-top:3px;color:var(--muted);font-size:11px}
+.transport-vehicle-specs{display:flex;justify-content:center;gap:8px;margin:12px 0 0}
+.transport-vehicle-specs span{padding:5px 12px;border:1px solid var(--line);border-radius:8px;font-size:11px;font-weight:600;color:var(--text-secondary);background:var(--surface-subtle)}
+.transport-vehicle-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.transport-vehicle-meta span{padding:4px 9px;border:1px solid var(--line);border-radius:999px;font-size:11px}
+.transport-vehicle-meta span.surcharge{border-color:#e8c468;background:var(--warning-soft);color:var(--warning)}
+.transport-vehicle-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);text-align:left}
+.transport-vehicle-price{flex:none}
+.transport-vehicle-price small{display:block;color:var(--muted);font-size:10px}
+.transport-vehicle-price strong{display:block;font-size:18px;color:var(--navy)}
+.transport-vehicle-reason{margin:10px 0 0;color:var(--red);font-size:11px;text-align:left}
+.transport-vehicle-card button.transport-select-button{flex:1;min-height:42px;border-radius:22px;background:var(--blue);color:var(--surface);font-size:13px;font-weight:800}
+.transport-vehicle-card.selected button.transport-select-button{background:var(--navy)}
+
+.transport-summary-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:13px;color:var(--muted)}
+.transport-summary-row.total{margin-top:4px;padding-top:11px;border-top:1px solid var(--line);color:var(--navy);font-weight:800;font-size:15px}
+.transport-payment-group{margin-bottom:12px}
+.transport-payment-group-label{display:block;margin-bottom:7px;font-size:12px;font-weight:700;color:var(--navy)}
+.transport-form .transport-payment-option{position:relative;display:flex;flex-direction:row;align-items:center;gap:12px;padding:13px 14px;margin-bottom:9px;border:1.5px solid var(--line);border-radius:13px;background:var(--surface);cursor:pointer;transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease}
+.transport-payment-option input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.transport-payment-option:has(input:focus-visible){outline:2px solid var(--brand-gradient-middle);outline-offset:2px}
+.transport-payment-option:has(input:checked){border-color:transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--ai-gradient) border-box;box-shadow:0 4px 14px #305ee71f}
+.transport-payment-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:11px;background:var(--soft);color:var(--muted);transition:background .15s ease,color .15s ease}
+.transport-payment-option:has(input:checked) .transport-payment-icon{background-image:var(--ai-gradient-soft);color:var(--brand-gradient-middle)}
+.transport-payment-copy{flex:1;min-width:0}
+.transport-payment-copy strong{display:block;font-size:13px;color:var(--navy)}
+.transport-payment-copy small{display:block;margin-top:2px;color:var(--muted);font-size:11px;line-height:1.3}
+.transport-payment-check{display:grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--surface);transition:background .15s ease,border-color .15s ease}
+.transport-payment-check svg{opacity:0;transition:opacity .15s ease}
+.transport-payment-option:has(input:checked) .transport-payment-check{background-image:var(--ai-gradient);border-color:transparent}
+.transport-payment-option:has(input:checked) .transport-payment-check svg{opacity:1}
+
+.transport-timeline{display:grid;gap:10px}
+.transport-timeline-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.transport-timeline-step span.dot{display:inline-block;flex:none;width:12px;height:12px;border-radius:50%;border:2px solid var(--line)}
+.transport-timeline-step.done{color:var(--navy)}
+.transport-timeline-step.done span.dot{border-color:var(--success);background:var(--success)}
+.transport-timeline-step.current span.dot{border-color:var(--blue)}
+.transport-timeline-step time{margin-left:auto;color:var(--muted);font-size:11px}
+
+.transport-driver-contact{display:flex;align-items:center;gap:12px}
+.transport-driver-contact strong{display:block;font-size:14px}
+.transport-driver-contact small{color:var(--muted);font-size:12px}
+
+.transport-meeting-copy strong{display:block;margin-bottom:5px;font-size:14px}
+.transport-meeting-copy p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.transport-meeting-hint{margin-top:9px;color:var(--muted);font-size:11px}
+
+.home-transport-banner{padding:0 var(--gutter) 5px}

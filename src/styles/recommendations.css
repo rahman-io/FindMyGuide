@@ -1,0 +1,2 @@
+.recommendation-section{padding-bottom:18px}.recommendation-section h2{display:flex;align-items:center;justify-content:space-between;padding-right:var(--gutter)}.recommendation-section h2::after{content:'Personalized';font-size:10px;letter-spacing:.02em;color:var(--blue);font-weight:700}
+.recommendation-reason{margin-top:4px;color:var(--ai-violet);font-size:10px;line-height:1.25}
